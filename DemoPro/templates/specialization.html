@@ -1,0 +1,46 @@
+{% block content %}
+      <h2>Add Specialization</h2>
+{% load static %}
+<div>
+    <form method="post" style="width:50%;" id="indexform" data-url="{% data_url %}">
+        {% csrf_token %}
+        {{form.as_p}}
+        <select name="programming" id="programming" >
+            {% for i in program %}
+            {{i.name}}
+            {% endfor %}
+
+        </select>
+        <br>
+        <select name="courses" id="courses" >
+            {% for i in course %}
+            {{i.name}}
+            {% endfor %}
+
+        </select>
+        <input type="submit" value="ADD DETAILS " onclick="send_form();">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script type="text/javascript">
+    $('#programming').Onclick="window.print()";(function(){
+    console.log('newone');
+    var url =$("#indexForm").attr("data-url");
+    var programmingId = $(this).val();
+
+    $.ajax({
+      url :url,
+      data:{
+        'programming' :programmingId
+        },
+        success: function(data){
+         $("#courses").html(data);
+         }
+     });
+
+
+</script>
+
+
+    </form>
+</div>
+
+{% endblock %}

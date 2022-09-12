@@ -1,0 +1,38 @@
+
+
+{% block content %}
+
+       <h2>This is Distric details info</h2>
+<table border="1px" class="table table-striped">
+    <tr >
+        <th>B_ID</th>
+        <th> NAME</th>
+        <th>Image</th>
+        <th>Status</th>
+        <th>Contents</th>
+        <th>DELETE</th>
+        <th>UPDATE</th>
+
+    </tr>
+    {% for states in form %}
+    <tr>
+        <td>{{states.b_id}}</td>
+        <td>{{states.name}}</td>
+        <td>{{states.image}}</td>
+        <td>{{states.status}}</td>
+        <td>{{states.contents}}</td>
+
+        <td>
+            <a href="{% url 'del' states.b_id %}">
+                <button class="btn btn-danger">Delete</button></a>
+        </td>
+         <td>
+            <a href="{% url 'upd' states.b_id %}">
+                <button class="btn btn-danger">Update</button></a>
+        </td>
+
+    </tr>
+    {% endfor %}
+
+</table>
+{% endblock %}
