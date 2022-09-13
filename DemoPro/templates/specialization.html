@@ -1,28 +1,30 @@
 {% block content %}
-      <h2>Add Specialization</h2>
 {% load static %}
+      <h2>Add Specialization</h2>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+
 <div>
-    <form method="post" style="width:50%;" id="indexform" data-url="{% data_url %}">
+    <form method="post" style="width:50%;" id="indexform">
         {% csrf_token %}
         {{form.as_p}}
-        <select name="programming" id="programming" >
-            {% for i in program %}
-            {{i.name}}
-            {% endfor %}
+         <input type="submit" value="ADD DETAILS ">
+ </form>
 
-        </select>
-        <br>
-        <select name="courses" id="courses" >
-            {% for i in course %}
-            {{i.name}}
-            {% endfor %}
 
-        </select>
-        <input type="submit" value="ADD DETAILS " onclick="send_form();">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script type="text/javascript">
-    $('#programming').Onclick="window.print()";(function(){
-    console.log('newone');
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+ $("#indexform").click(function(){
+  console.log("print new");
     var url =$("#indexForm").attr("data-url");
     var programmingId = $(this).val();
 
@@ -36,11 +38,6 @@
          }
      });
 
-
-</script>
-
-
-    </form>
 </div>
 
 {% endblock %}

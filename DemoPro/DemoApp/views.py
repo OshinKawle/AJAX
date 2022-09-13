@@ -53,14 +53,21 @@ def banner_edit(request,pk):
 from django.shortcuts import render,redirect
 from .forms import BannerForm,UniversityForm,CourseForm,SpecializationForm
 from .models import Banner,University,Course,Specialization
+from django.http import JsonResponse
 def banner(request):
     form = BannerForm()
     if request.method == 'POST':
         form = BannerForm(request.POST)
         if form.is_valid():
-
             form.save()
-            return redirect('show')
+            ban = Banner.objects.values()
+            print(ban)
+            banner_data=list(ban)
+            return JsonResponse({'status':'save','banner_data':banner_data})
+
+        else:
+            return JsonResponse({'status':0})
+            #return redirect('show')
     template_name = 'add.html'
     context = {'form': form}
     return render(request, template_name, context)
@@ -72,15 +79,15 @@ def show(request):
     return render(request, template_name, context)
 
 def delete(request,i):
-    laptop=Banner.objects.get(b_id=i)
-    laptop.delete()
+    banner=Banner.objects.get(b_id=i)
+    banner.delete()
     return redirect('show')
 
 def update(request,i):
-    laptop = Banner.objects.get(b_id=i)
-    form = BannerForm(instance=laptop)
+    banner = Banner.objects.get(b_id=i)
+    form = BannerForm(instance=banner)
     if request.method == 'POST':
-        form = BannerForm(request.POST,instance=laptop)
+        form = BannerForm(request.POST,instance=banner)
         if form.is_valid():
             form.save()
             return redirect('show')
@@ -95,7 +102,30 @@ def university(request):
         if form.is_valid():
 
             form.save()
-            return redirect('show')
+            return redirect('showUni')
+    template_name = 'addUniversity.html'
+    context = {'form': form}
+    return render(request, template_name, context)
+
+def showUniversity(request):
+    form=University.objects.all()
+    context={'form':form}
+    template_name='showUniversity.html'
+    return render(request, template_name, context)
+
+def deleteUni(request,i):
+    university=University.objects.get(uni_id=i)
+    university.delete()
+    return redirect('showUni')
+
+def updateUni(request,i):
+    university = University.objects.get(uni_id=i)
+    form = BannerForm(instance=university)
+    if request.method == 'POST':
+        form = BannerForm(request.POST,instance=university)
+        if form.is_valid():
+            form.save()
+            return redirect('showUni')
     template_name = 'addUniversity.html'
     context = {'form': form}
     return render(request, template_name, context)
@@ -120,7 +150,7 @@ def specialization(request):
 
             program.save()
             return redirect('show')
-    template_name = 'addCourse.html'
+    template_name = 'specialization.html'
     context = {'program': program}
     return render(request, template_name, context)
 '''
@@ -128,9 +158,9 @@ def university(request):
     program =University.objects.all()
     d={'program':program}
     return render(request,'addUniversity.html',d)
-'''
 def load_courses(request):
     course_id =request.GET.get('programming')
     courses= Course.objects.filter(programming_id=course_id).order_by=('course_id')
     return render(request,{'courses':courses},'course_drop.html')
 
+'''

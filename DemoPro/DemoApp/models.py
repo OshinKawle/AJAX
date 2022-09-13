@@ -25,7 +25,7 @@ class University(models.Model):
 
     uni_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255)
-    logo = models.ImageField(upload_to='Images', default='')
+    logo = models.ImageField(upload_to='', default='path/to/my/default/image.jpg')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     deleted_at = models.DateTimeField(auto_now=True)

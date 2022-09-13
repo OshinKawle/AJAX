@@ -1,8 +1,5 @@
-
-
-
 <br>
-       <h2 style="color:blue">Banner table</h2>
+       <h2 style="color:blue">University table</h2>
 <table border="1px" class="table table-striped" style="table-align:center">
     <tr >
         <th>B_ID</th>
@@ -16,19 +13,19 @@
     </tr>
     {% for states in form %}
     <tr>
-        <td>{{states.b_id}}</td>
+
 
         <td>{{states.name}}</td>
-        <td>{{states.image}}</td>
-        <td>{{states.status}}</td>
+        <td>{{states.logo}}</td>
+
         <td>{{states.contents}}</td>
 
         <td>
-            <a href="{% url 'del' states.b_id %}">
+            <a href="{% url 'del_uni' states.uni_id %}">
                 <button class="btn btn-danger">Delete</button></a>
         </td>
          <td>
-            <a href="{% url 'upd' states.b_id %}">
+            <a href="{% url 'upd_uni' states.uni_id %}">
                 <button class="btn btn-danger">Update</button></a>
         </td>
 
