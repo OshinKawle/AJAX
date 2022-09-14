@@ -1,3 +1,7 @@
+
+<option value="">-------------------------</option>
+
+
 {% for course in courses %}
-{{course.name}}
+<option value="{{course.pk}}">{{course.name}}</option>
 {% endfor %}

@@ -5,7 +5,7 @@ from .models import Banner,University,Course,Specialization
 
 class BannerAdmin(admin.ModelAdmin):
     model = Banner
-    list_display = ['b_id', 'name', 'image', 'status', 'created_at', 'updated_at', 'contents']
+    list_display = ['b_id', 'name', 'image', 'status', 'created_at','deleted_at', 'updated_at', 'contents']
 
 
 admin.site.register(Banner, BannerAdmin)

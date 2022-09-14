@@ -13,6 +13,14 @@ class UniversityForm(forms.ModelForm):
 
         model = University
         fields = '__all__'
+
+class SpecializationForm(forms.ModelForm):
+    class Meta:
+
+        model = Specialization
+        fields = '__all__'
+
+
 '''
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control',

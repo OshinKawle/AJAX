@@ -8,11 +8,11 @@
 
 
 <div>
-    <form method="post" enctype="multipart/form-data" style="width:50%;" class="jumbotron">
+    <form method="post" enctype="multipart/form-data" style="width:50%;" class="jumbotron" id="datasave">
         <h2 style="text-align:center">Add Banner</h2>
         {% csrf_token %}
         {{form.as_p}}
-        <input type="submit" id="datasave" value="ADD DETAILS "/>
+        <input type="submit"  value="ADD DETAILS "/>
     </form><br>
 
     <table border="1px" class="table table-striped">
@@ -25,7 +25,7 @@
 
 
     </tr>
-    <br>
+
         <h2 style="color:green">
             Recently added Banner
         </h2><br>
@@ -35,6 +35,7 @@
         <td>{{form.image}}</td>
         <td>{{form.status}}</td>
         <td>{{form.contents}}</td>
+
     </tr></table>
 
 </div>

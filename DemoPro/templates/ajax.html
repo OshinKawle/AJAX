@@ -1,16 +1,16 @@
-
+<!--
 <script>
   $("#datasave").click(function(){
   console.log("print new");
   let nm =$("#nameid").val();
   let co =$("#contentsid").val();
   console.log(nm);
-  console.log(co);
+  console.log(co)});
   mydata= { name = nm, image = im ,status = st , contents = cn};
   $.ajax({
     url: "{% url 'banner' %}",
     method: "POST",
-    data : mydata
+    data : mydata,
     success:function(data){
     //console.log(data);
         if(data.status== "save") {
@@ -29,5 +29,23 @@
   });
   $("#coursesave").click(function(){
   console.log("print new");
+
+</script>   -->
+
+<script>
+    $("#uni").change(function(){
+     console.log("print new")});
+    var url = $("#course").attr("data_course")
+    var uni_id = $(this).val();
+    $.ajax({
+    url : url,
+    data: {
+        'uni' : 'uni_id' },
+    success : function(data){
+    $("#course").html(data);
+    }
+    });
+
+
 
 </script>

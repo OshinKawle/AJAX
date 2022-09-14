@@ -5,11 +5,11 @@
 <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
 
 <div>
-    <form method="post" style="width:50%;" class="jumbotron">
+    <form method="post" style="width:50%;" class="jumbotron" id="course">
         <h2 style="text-align:center;color:blue">Add Course</h2><br>
         {% csrf_token %}
         {{form.as_p}}
-        <input type="submit" id="coursesave" value="ADD DETAILS ">
+        <input type="submit" value="ADD DETAILS ">
     </form>
 </div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

@@ -14,6 +14,7 @@ urlpatterns=[
     path('upd/<int:i>/', views.updateUni, name='upd_uni'),
     path('addcourse/',views.course),
     path('special/',views.specialization),
+    path('special1/',views.special,name='data_course')
     #path('drop/',views.load_courses,name='data_url')
     #path('edit/<int:pk>/',views.banner_edit)
 ]
